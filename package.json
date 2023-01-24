@@ -1,6 +1,6 @@
 {
-  "name": "cores.wire_vue",
-  "version": "1.0.11",
+  "name": "wire-vue",
+  "version": "1.0.1",
   "description": "",
   "license": "MIT",
   "type": "module",
@@ -12,12 +12,12 @@
     "dist"
   ],
   "types": "./dist/index.d.ts",
-  "main": "./dist/wire_vue.umd.js",
-  "module": "./dist/wire_vue.es.js",
+  "main": "./dist/wire-vue.umd.js",
+  "module": "./dist/wire-vue.es.js",
   "exports": {
     ".": {
-      "import": "./dist/wire_vue.es.js",
-      "require": "./dist/wire_vue.umd.js"
+      "import": "./dist/wire-vue.es.js",
+      "require": "./dist/wire-vue.umd.js"
     }
   },
   "scripts": {
@@ -28,7 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "@vitejs/plugin-vue": "^4.0.0",
-    "cores.wire": "^1.0.14",
+    "wire-ts": "^1.0.15",
     "eslint": "^8.32.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "^9.9.0",

@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
-import WireVue from 'cores.wire_vue';
-import { Wire } from 'cores.wire';
+import WireVue from 'wire-vue';
+import { Wire } from 'wire-ts';
 
 import DataKeys from '@/constants/DataKeys';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { Wire } from 'cores.wire';
+import { Wire } from 'wire-ts';
 import DataKeys from '@/constants/DataKeys';
 
 defineProps<{ title: string }>();

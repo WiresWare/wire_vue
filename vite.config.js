@@ -24,20 +24,20 @@ export default defineConfig({
     minify: false,
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'wire_vue',
+      name: 'wire-vue',
       formats: ['es', 'umd'],
-      fileName: (format) => `wire_vue.${format}.js`,
+      fileName: (format) => `wire-vue.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['vue', 'cores.wire'],
+      external: ['vue', 'wire-ts'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           vue: 'Vue',
-          'cores.wire': 'cores.wire',
+          'wire-ts': 'wire-ts',
         },
       },
     },

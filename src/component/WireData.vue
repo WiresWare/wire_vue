@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Wire } from 'cores.wire';
+import { Wire } from 'wire-ts';
 import { computed, onMounted, onUnmounted, ref, useSlots } from 'vue';
 
 type RebuildWhenMethod = (value: any) => boolean;

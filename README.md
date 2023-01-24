@@ -4,14 +4,14 @@ Utility library for Vue that helps get reactive data from [Wire](https://github.
 ## How to
 1. Dependency:
 ```
-npm i -D cores.wire_vue
+npm i -D wire-vue wire-ts
 or 
-yarn add -D cores.wire_vue
+yarn add -D wire-vue wire-ts
 ```
 2. Vue plugin:
 ```typescript
 import { createApp } from 'vue';
-import WireVue from 'cores.wire_vue';
+import WireVue from 'wire-vue';
 import App from './App.vue';
 
 createApp(App)

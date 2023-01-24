@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Wire } from 'cores.wire';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, useSlots } from 'vue';
 
 type RebuildWhenMethod = (value: any) => boolean;
 
@@ -10,12 +10,15 @@ interface IWireDataProps {
   isStatic?: boolean;
 }
 
+const slots = useSlots();
 const props = defineProps<IWireDataProps>();
 const wireData = Wire.data(props.for);
 const data = ref<any>(wireData.value);
 
 const hasData = computed(() => data.value !== undefined && data.value !== null);
 const hasWhen = () => props.when !== undefined && props.when !== null;
+const hasUndefinedSlot = computed(() => slots.undefined);
+
 const isWhenFunction = () => !!props.when && props.when instanceof Function;
 
 const onWireDataUpdate = async (value: any) => {
@@ -36,7 +39,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <slot v-if="hasData" :data="data" />
+  <slot
+    v-if="hasData || (!hasData && !hasUndefinedSlot)"
+    :data="data"
+    :has="hasData"
+  />
   <slot v-else name="undefined" />
 </template>
 

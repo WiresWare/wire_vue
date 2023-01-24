@@ -21,11 +21,11 @@ const isWhenFunction = () => !!props.when && props.when instanceof Function;
 const onWireDataUpdate = async (value: any) => {
   const skip = (hasWhen() && !props.when) || (isWhenFunction() && !props.when(value));
   if (skip) return;
-  console.log('> WireData -> onWireDataUpdate:', value);
+  // console.log('> WireData -> onWireDataUpdate:', value);
   data.value = value;
 };
 onMounted(() => {
-  console.log('> WireData -> onMounted: for =', props.for, data.value);
+  // console.log('> WireData -> onMounted: for =', props.for, data.value);
   if (props.isStatic) return;
   wireData.subscribe(onWireDataUpdate);
 });

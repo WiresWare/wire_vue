@@ -6,7 +6,10 @@ import WireData from './components/WireData.vue';
 </script>
 
 <template>
-  <WireData :for="DataKeys.COUNT">
+  <WireData
+    :for="DataKeys.COUNT"
+    :when="() => true"
+  >
     <template #default="{ data }">
       <h1>{{ data }}</h1>
     </template>

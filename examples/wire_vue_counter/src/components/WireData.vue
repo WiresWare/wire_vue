@@ -13,11 +13,11 @@ interface IWireDataProps {
 const props = defineProps<IWireDataProps>();
 const wireData = Wire.data(props.for);
 const data = ref<any>(wireData.value);
-const hasWhen = () => (props.when !== undefined && props.when !== null) && (props.when == 0 || !!props.when);
 const hasData = computed(() => data.value !== undefined && data.value !== null);
+const hasWhen = () => props.when !== undefined && props.when !== null;
 const isWhenFunction = () => !!props.when && props.when instanceof Function;
 const onWireDataUpdate = async (value: any) => {
-  const skip = hasWhen() || (isWhenFunction() && !props.when(value));
+  const skip = (hasWhen() && !props.when) || (isWhenFunction() && !props.when(value));
   if (skip) return;
   console.log('> WireData -> onWireDataUpdate:', value);
   data.value = value;
@@ -34,7 +34,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <slot v-if="hasData" :data="data" />
+  <slot
+    v-if="hasData"
+    :data="data"
+  />
   <slot
     v-else
     name="undefined"

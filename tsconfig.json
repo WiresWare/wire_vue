@@ -11,7 +11,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@": ["./src"]
+      "@/*": ["src/*"]
     },
     "allowJs": true,
     "target": "ESNext",
@@ -27,12 +27,12 @@
     "noImplicitThis": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
   },
   "exclude": [
     "node_modules",
     "examples",
     "dist"
   ],
-  "include": ["src", "test"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "test"],
 }

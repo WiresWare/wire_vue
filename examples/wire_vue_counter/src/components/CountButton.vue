@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue';
 import { Wire } from 'cores.wire';
 import DataKeys from '@/constants/DataKeys';
 
-defineProps<{ msg: string }>();
+defineProps<{ title: string }>();
 const count = ref<number | undefined>(Wire.data(DataKeys.COUNT).value);
 const hasValue = computed(() => count.value != null && count.value !== undefined);
 watch(count, (value?: number) => Wire.data(DataKeys.COUNT, value!));
@@ -15,11 +15,10 @@ const onClick = () => {
 </script>
 
 <template>
-  <div>{{ msg }}</div>
-  <button
-    type="button"
-    @click="onClick"
-  >
+  <div>
+    <small>{{ title }}</small>
+  </div>
+  <button @click="onClick">
     count is {{ hasValue ? count : "not set" }}
   </button>
 </template>

@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { Wire } from 'wire-ts';
 import DataKeys from '@/constants/DataKeys';
+import Signals from '@/constants/Signals';
 
 defineProps<{ title: string }>();
-const count = ref<number | undefined>(Wire.data(DataKeys.COUNT).value);
-const hasValue = computed(() => count.value != null && count.value !== undefined);
-watch(count, (value?: number) => Wire.data(DataKeys.COUNT, value!));
+const wdCount = Wire.data(DataKeys.COUNT);
+const count = ref<number | undefined>(wdCount.value);
+const hasValue = computed(() => !!count.value);
+wdCount.subscribe((value) => count.value = value);
 const onClick = () => {
-  if (count.value == undefined) {
-    count.value = 0;
-  } else count.value++;
+  console.log('> CountButton -> onClick');
+  Wire.send(Signals.COUNT);
 };
 </script>
 

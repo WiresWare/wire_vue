@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import CountButton from './components/CountButton.vue';
-import DataKeys from './constants/DataKeys.ts';
+import CountButton from '@/components/CountButton.vue';
+import DataKeys from '@/constants/DataKeys';
+import { Wire } from 'wire-ts';
+import Signals from '@/constants/Signals';
 
+const onClearClick = () =>
+  Wire.send(Signals.RESET);
 </script>
 
 <template>
@@ -12,7 +16,10 @@ import DataKeys from './constants/DataKeys.ts';
   >
     <h1>{{ has ? data : 'no data' }}</h1>
   </WireData>
-  <WireData :for="DataKeys.COUNT" :when="() => true">
+  <WireData
+    :for="DataKeys.COUNT"
+    :when="() => true"
+  >
     <template #default="{ data }">
       <h1>{{ data }}</h1>
     </template>
@@ -20,5 +27,13 @@ import DataKeys from './constants/DataKeys.ts';
       <p>Value is undefined</p>
     </template>
   </WireData>
-  <CountButton title="Increase" />
+  <CountButton title="Count" />
+  <div style="margin-top: 1rem;">
+    <button
+      style="background-color: pink;"
+      @click="onClearClick"
+    >
+      Reset
+    </button>
+  </div>
 </template>

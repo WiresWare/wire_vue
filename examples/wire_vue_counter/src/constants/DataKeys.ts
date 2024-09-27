@@ -1,3 +1,3 @@
 export default {
-  COUNT: 'data_key__count'
-}
+  COUNT: 'data_key__count',
+};

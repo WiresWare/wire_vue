@@ -5,3 +5,4 @@ export default {
     app.component('WireData', WireData);
   },
 };
+export { WireData };

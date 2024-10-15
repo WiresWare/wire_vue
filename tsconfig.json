@@ -1,13 +1,13 @@
 {
   "outDir": "dist",
   "declaration": true,
-  "useDefineForClassFields": true,
   "types": [
     "chrome",
     "node"
   ],
   "emitDeclarationOnly": true,
   "compilerOptions": {
+    "useDefineForClassFields": true,
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {

@@ -2,6 +2,8 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import eslint from 'vite-plugin-eslint';
 import vue from '@vitejs/plugin-vue';
+import removeConsole from 'vite-plugin-remove-console';
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
   resolve: {
@@ -14,6 +16,12 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    dts({
+      include: ['src/**/*.ts'],
+      insertTypesEntry: true,
+      rollupTypes: true,
+    }),
+    removeConsole(),
     eslint(),
   ],
   build: {
@@ -21,12 +29,13 @@ export default defineConfig({
     emptyOutDir: true,
     copyPublicDir: false,
     target: 'esnext',
-    minify: false,
+    minify: true,
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'wire-vue',
-      formats: ['es', 'umd'],
-      fileName: (format) => `wire-vue.${format}.js`,
+      formats: ['es'],
+      // fileName: (format) => `wire-vue.${format}.js`,
+      fileName: 'wire-vue',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

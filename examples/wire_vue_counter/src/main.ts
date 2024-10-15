@@ -8,7 +8,7 @@ import CountMiddleware from '@/middleware/CountMiddleware';
 import LocalKeys from '@/constants/LocalKeys';
 
 import './style.css';
-import App from '@/App.vue';
+import App from './App.vue';
 
 const countRaw = localStorage.getItem(LocalKeys.COUNT) ?? ' ';
 const countInitial = parseInt(countRaw) || undefined;

@@ -2,6 +2,7 @@
 import CountButton from '@/components/CountButton.vue';
 import DataKeys from '@/constants/DataKeys';
 import { Wire } from 'wire-ts';
+import { WireData } from 'wire-vue';
 import Signals from '@/constants/Signals';
 
 const onClearClick = () =>

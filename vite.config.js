@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import eslint from 'vite-plugin-eslint';
 import vue from '@vitejs/plugin-vue';
 import removeConsole from 'vite-plugin-remove-console';
-import dts from "vite-plugin-dts";
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   resolve: {
@@ -34,8 +34,8 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'wire-vue',
       formats: ['es'],
-      // fileName: (format) => `wire-vue.${format}.js`,
-      fileName: 'wire-vue',
+      fileName: (format) => `wire-vue.${format}.js`,
+      // fileName: 'wire-vue',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

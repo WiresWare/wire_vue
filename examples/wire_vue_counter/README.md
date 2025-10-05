@@ -204,10 +204,8 @@ npm install -g surge
 
 ## Learn More
 
-- [Wire Vue Documentation](https://github.com/wire-ts/wire-vue)
-- [UnoCSS Documentation](https://unocss.dev/)
-- [Vue 3 Documentation](https://vuejs.org/)
-- [Vite Documentation](https://vitejs.dev/)
+- [Wire Vue Documentation](https://github.com/WiresWare/wire_vue)
+- [Wire Documentation](https://github.com/WiresWare/wire_ts)
 
 ## License
 

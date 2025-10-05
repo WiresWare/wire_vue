@@ -9,6 +9,7 @@ import CountDisplay from '@/components/Counter/CountDisplay.vue';
 import CountBadge from '@/components/Counter/CountBadge.vue';
 import UndefinedStatus from '@/components/Counter/UndefinedStatus.vue';
 import CounterAnalytics from '@/components/Counter/CounterAnalytics.vue';
+import LearnMore from '@/components/LearnMore.vue';
 import { defineAsyncComponent } from 'vue';
 import DataKeys from '@/constants/DataKeys';
 import Signals from '@/constants/Signals';
@@ -116,6 +117,11 @@ const onResetButton = () => {
         :threshold="10"
         empty-sub-message="Start counting to see your analytics!"
       />
+    </CardComponent>
+
+    <!-- Learn More -->
+    <CardComponent title="Learn More">
+      <LearnMore />
     </CardComponent>
   </AppLayout>
 </template>

@@ -2,6 +2,7 @@
 interface Props {
   title: string;
   description: string;
+  version?: string;
 }
 
 defineProps<Props>();
@@ -14,6 +15,7 @@ defineProps<Props>();
     </h1>
     <p class="text-gray-600">
       {{ description }}
+      <span class="ml-2 text-sm font-normal text-gray-400">v{{ version }}</span>
     </p>
   </div>
 </template>

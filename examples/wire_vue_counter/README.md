@@ -179,10 +179,28 @@ bun run dev
 
 ### Build for Production
 
-````bash
+```bash
 bun run build
-```</parameter>
-````
+```
+
+### Build and Publish to Surge.sh
+
+To build and deploy the application to [surge.sh](https://surge.sh/) in one command:
+
+```bash
+bun run publish
+```
+
+This will:
+
+1. Build the project (`vue-tsc && vite build`)
+2. Deploy the `dist` folder to `wire-vue-example-counter.surge.sh`
+
+**Note:** You need to have surge installed globally. If you don't have it, install it first:
+
+```bash
+npm install -g surge
+```
 
 ## Learn More
 

@@ -12,6 +12,8 @@ import CounterAnalytics from '@/components/Counter/CounterAnalytics.vue';
 import DataKeys from '@/constants/DataKeys';
 import Signals from '@/constants/Signals';
 
+const version = import.meta.env.VITE_APP_VERSION;
+
 const onCountButtonIncrement = () => {
   console.log('> App -> onCountButtonIncrement');
   Wire.send(Signals.INCREASE);
@@ -28,6 +30,7 @@ const onResetButton = () => {
       <AppHeader
         title="Wire Vue Counter"
         description="A reactive counter using WireData component"
+        :version="version"
       />
     </template>
     <!-- First WireData example with v-slot -->

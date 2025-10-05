@@ -19,7 +19,8 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
-    "vue"
+    "vue",
+    "tailwindcss"
   ],
   "rules": {
     "indent": ["error", 2],
@@ -39,6 +40,8 @@
       "multiline": {
         "max": 1
       }
-    }]
+    }],
+    "tailwindcss/classnames-order": "error",
+    "tailwindcss/no-custom-classname": "off"
   }
 }

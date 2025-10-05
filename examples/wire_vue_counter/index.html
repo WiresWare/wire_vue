@@ -1,13 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue + TS</title>
+    <meta
+      name="description"
+      content="Wire Vue Counter - A reactive counter example using Wire Vue with UnoCSS styling"
+    />
+    <meta name="theme-color" content="#3b82f6" />
+    <title>Wire Vue Counter - UnoCSS Example</title>
+    <style>
+      /* Prevent flash of unstyled content */
+      html {
+        visibility: hidden;
+      }
+      html.loaded {
+        visibility: visible;
+      }
+    </style>
   </head>
-  <body>
+  <body class="font-sans antialiased">
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      // Remove FOUC (Flash of Unstyled Content)
+      document.addEventListener("DOMContentLoaded", function () {
+        document.documentElement.classList.add("loaded");
+      });
+    </script>
   </body>
 </html>

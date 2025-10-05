@@ -1,4 +1,4 @@
 export default {
-  COUNT: 'signal__count',
+  INCREASE: 'signal__increase',
   RESET: 'signal__reset',
 };

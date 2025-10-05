@@ -9,8 +9,8 @@ export default {
     Wire.add(scope, Signals.RESET, () => {
       Wire.data(DataKeys.COUNT, () => undefined);
     });
-    Wire.add(scope, Signals.COUNT, () => {
-      console.log('> CountController -> Signals.COUNT');
+    Wire.add(scope, Signals.INCREASE, () => {
+      console.log('> CountController -> Signals.INCREASE');
       Wire.data(DataKeys.COUNT, (value: number) => {
         const result = (value ?? 0) + 1;
         console.log('> \t result:', result);

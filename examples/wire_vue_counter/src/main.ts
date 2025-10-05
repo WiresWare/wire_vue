@@ -7,7 +7,10 @@ import CountController from '@/controller/CountController';
 import CountMiddleware from '@/middleware/CountMiddleware';
 import LocalKeys from '@/constants/LocalKeys';
 
+import 'virtual:uno.css';
+import '@unocss/reset/tailwind.css';
 import './style.css';
+
 import App from './App.vue';
 
 const countRaw = localStorage.getItem(LocalKeys.COUNT) ?? ' ';

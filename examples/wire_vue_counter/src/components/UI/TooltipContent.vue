@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 const CodeBlock = defineAsyncComponent(() => import('./CodeBlock.vue'));
 
@@ -30,8 +31,11 @@ withDefaults(defineProps<Props>(), {
       </template>
       <template #fallback>
         <div class="mt-3 rounded-lg border border-gray-700 bg-gray-900 p-4">
-          <div class="text-sm text-gray-400">
-            Loading code...
+          <div class="text-gray-400">
+            <LoadingSpinner
+              size="md"
+              text="Loading code..."
+            />
           </div>
         </div>
       </template>

@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-  title: string;
   count?: number | undefined;
   hasValue: boolean;
 }>();
@@ -18,32 +17,19 @@ const onClick = () => {
 </script>
 
 <template>
-  <div class="space-y-4 text-center">
-    <div class="mb-3">
-      <h3 class="text-lg font-medium text-gray-700">
-        {{ title }}
-      </h3>
-      <p class="mt-1 text-sm text-gray-500">
-        Current state: {{ hasValue ? 'initialized' : 'not set' }}
-      </p>
-    </div>
+  <button
+    class="btn-primary group relative min-w-48 transform overflow-hidden px-8 py-3 text-lg transition-all duration-200 hover:scale-105 active:scale-95"
+    :class="{
+      'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700': hasValue && isEven,
+      'bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700': hasValue && !isEven,
+    }"
+    @click="onClick"
+  >
+    <span class="relative z-10 font-semibold">
+      Count is {{ hasValue ? count : "not set" }}
+    </span>
 
-    <div class="relative">
-      <button
-        class="btn-primary group relative min-w-48 transform overflow-hidden px-8 py-3 text-lg transition-all duration-200 hover:scale-105 active:scale-95"
-        :class="{
-          'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700': hasValue && isEven,
-          'bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700': hasValue && !isEven,
-        }"
-        @click="onClick"
-      >
-        <span class="relative z-10 font-semibold">
-          Count is {{ hasValue ? count : "not set" }}
-        </span>
-
-        <!-- Ripple effect -->
-        <div class="absolute inset-0 rounded bg-white opacity-0 transition-opacity duration-150 group-active:opacity-20" />
-      </button>
-    </div>
-  </div>
+    <!-- Ripple effect -->
+    <div class="absolute inset-0 rounded bg-white opacity-0 transition-opacity duration-150 group-active:opacity-20" />
+  </button>
 </template>

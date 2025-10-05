@@ -98,7 +98,6 @@ const onResetButton = () => {
           :when="() => true"
         >
           <CountButton
-            title="Click to Increase Counter"
             :count="data"
             :has-value="has"
             @increment="onCountButtonIncrement"

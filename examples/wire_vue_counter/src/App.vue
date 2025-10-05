@@ -34,7 +34,10 @@ const onResetButton = () => {
       />
     </template>
     <!-- First WireData example with v-slot -->
-    <CardComponent title="Current Count (v-slot)">
+    <CardComponent
+      title="Current Count (v-slot)"
+      info="This example uses v-slot syntax to access 'has' and 'data' properties from WireData. The 'has' property indicates if data exists, while 'data' contains the actual value."
+    >
       <WireData
         v-slot="{ has, data }"
         :for="DataKeys.COUNT"
@@ -48,7 +51,10 @@ const onResetButton = () => {
     </CardComponent>
 
     <!-- Second WireData example with template slots -->
-    <CardComponent title="Count Status (template slots)">
+    <CardComponent
+      title="Count Status (template slots)"
+      info="This example uses named template slots. The #default slot renders when data exists, while the #undefined slot renders when data is undefined. This provides clean conditional rendering."
+    >
       <WireData :for="DataKeys.COUNT" :when="() => true">
         <template #default="{ data }">
           <CountBadge :count="data" />

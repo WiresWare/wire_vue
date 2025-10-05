@@ -9,8 +9,12 @@ import CountDisplay from '@/components/Counter/CountDisplay.vue';
 import CountBadge from '@/components/Counter/CountBadge.vue';
 import UndefinedStatus from '@/components/Counter/UndefinedStatus.vue';
 import CounterAnalytics from '@/components/Counter/CounterAnalytics.vue';
+import { defineAsyncComponent } from 'vue';
 import DataKeys from '@/constants/DataKeys';
 import Signals from '@/constants/Signals';
+import CodeExamples from '@/constants/CodeExamples';
+
+const TooltipContent = defineAsyncComponent(() => import('@/components/UI/TooltipContent.vue'));
 
 const version = import.meta.env.VITE_APP_VERSION;
 
@@ -36,8 +40,14 @@ const onResetButton = () => {
     <!-- First WireData example with v-slot -->
     <CardComponent
       title="Current Count (v-slot)"
-      info="This example uses v-slot syntax to access 'has' and 'data' properties from WireData. The 'has' property indicates if data exists, while 'data' contains the actual value."
+      info="true"
     >
+      <template #tooltip-content>
+        <TooltipContent
+          description="This example uses v-slot syntax to access 'has' and 'data' properties from WireData. The 'has' property indicates if data exists, while 'data' contains the actual value."
+          :code="CodeExamples.WIRE_DATA_V_SLOT"
+        />
+      </template>
       <WireData
         v-slot="{ has, data }"
         :for="DataKeys.COUNT"
@@ -53,8 +63,14 @@ const onResetButton = () => {
     <!-- Second WireData example with template slots -->
     <CardComponent
       title="Count Status (template slots)"
-      info="This example uses named template slots. The #default slot renders when data exists, while the #undefined slot renders when data is undefined. This provides clean conditional rendering."
+      info="true"
     >
+      <template #tooltip-content>
+        <TooltipContent
+          description="This example uses named template slots for conditional rendering. The #default slot renders when data exists, while #undefined slot renders when data is undefined."
+          :code="CodeExamples.WIRE_DATA_TEMPLATE_SLOTS"
+        />
+      </template>
       <WireData :for="DataKeys.COUNT" :when="() => true">
         <template #default="{ data }">
           <CountBadge :count="data" />
@@ -65,7 +81,17 @@ const onResetButton = () => {
       </WireData>
     </CardComponent>
 
-    <CardComponent>
+    <CardComponent
+      title="Increment Button"
+      info="true"
+    >
+      <template #tooltip-content>
+        <TooltipContent
+          description="This example shows how to send Wire signals from components. The button click sends the INCREASE signal, which is handled by the CountController to update the count data."
+          :code="CodeExamples.WIRE_SEND_SIGNAL"
+          language="javascript"
+        />
+      </template>
       <div class="flex flex-col gap-4">
         <WireData
           v-slot="{ has, data }"

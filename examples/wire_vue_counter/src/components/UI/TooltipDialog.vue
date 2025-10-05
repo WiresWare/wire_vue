@@ -1,6 +1,5 @@
 <script setup lang="ts">
 interface Props {
-  text: string;
   isOpen: boolean;
 }
 
@@ -27,7 +26,7 @@ const handleClose = () => {
   >
     <div
       v-if="isOpen"
-      class="absolute right-0 top-8 z-50 w-64 rounded-lg border border-gray-200 bg-white p-4 shadow-lg"
+      class="min-w-90 w-130 absolute right-0 top-8 z-50 max-w-2xl rounded-lg border border-gray-200 bg-white p-4 shadow-lg"
     >
       <button
         class="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded text-gray-400 hover:bg-gray-100 hover:text-gray-600"
@@ -47,8 +46,8 @@ const handleClose = () => {
           />
         </svg>
       </button>
-      <div class="pr-4 text-sm text-gray-600">
-        {{ text }}
+      <div class="pr-4">
+        <slot />
       </div>
     </div>
   </transition>

@@ -30,10 +30,11 @@ const closeTooltip = () => {
       <div v-if="info" class="relative">
         <InfoButton @click="toggleTooltip" />
         <TooltipDialog
-          :text="info"
           :is-open="isTooltipOpen"
           @close="closeTooltip"
-        />
+        >
+          <slot name="tooltip-content" />
+        </TooltipDialog>
       </div>
     </div>
     <div class="flex flex-col items-center">

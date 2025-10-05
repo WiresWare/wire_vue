@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { Wire } from 'wire-ts';
-import { computed, onMounted, onUnmounted, ref, useSlots } from 'vue';
-
-type RebuildWhenMethod = (value: any) => boolean;
-
-interface IWireDataProps {
-  for: string;
-  when?: any | RebuildWhenMethod;
-  isStatic?: boolean;
-}
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  ref,
+  useSlots,
+} from 'vue';
+import type { IWireDataProps } from '@/types/WireData';
 
 const slots = useSlots();
 const props = defineProps<IWireDataProps>();

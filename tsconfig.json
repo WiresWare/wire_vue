@@ -1,12 +1,8 @@
 {
-  "outDir": "dist",
-  "declaration": true,
-  "types": [
-    "chrome",
-    "node"
-  ],
-  "emitDeclarationOnly": true,
   "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "useDefineForClassFields": true,
     "rootDir": ".",
     "baseUrl": ".",
@@ -17,7 +13,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -28,11 +24,9 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
+    "jsx": "preserve",
+    "verbatimModuleSyntax": true
   },
-  "exclude": [
-    "node_modules",
-    "examples",
-    "dist"
-  ],
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "test"],
+  "exclude": ["node_modules", "examples", "dist"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

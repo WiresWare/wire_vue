@@ -6,4 +6,4 @@ export default {
   },
 };
 export { WireData };
-export type { IWireDataProps, RebuildWhen } from '@/types/WireData';
+export type { IWireDataProps, WireDataRebuildWhenFunction } from '@/types/WireData';

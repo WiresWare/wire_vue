@@ -1,7 +1,7 @@
-export type RebuildWhen = (value: any) => boolean;
+export type WireDataRebuildWhenFunction = (value: any) => boolean;
 
 export interface IWireDataProps {
   for: string;
-  when?: any | RebuildWhen;
+  when?: any | WireDataRebuildWhenFunction;
   isStatic?: boolean;
 }

@@ -31,32 +31,38 @@ const slots = useSlots();
 const props = defineProps<IWireDataProps>();
 /**
  * Emits events from the WireData component.
- * @event changed - Emitted whenever the `loadData` value changes, providing the new data.
- * @type {T | undefined | null} The new value of the `loadData`.
+ * @event changed - Emitted whenever the `dataRef` value changes, providing the new data.
+ * @type {T | undefined | null} The new value of the `dataRef`.
  */
 const emits = defineEmits<{ changed: [WireDataPossibleValues] }>();
 
 const wireData = Wire.data<T>(props.for);
-const loadData = ref<WireDataPossibleValues>(wireData.value);
+const dataRef = ref<WireDataPossibleValues>(wireData.value);
 
-const hasData = computed(() => loadData.value !== undefined && loadData.value !== null);
+const hasData = computed(() => dataRef.value !== undefined && dataRef.value !== null);
 const hasWhen = () => props.when !== undefined && props.when !== null;
 const hasSlotUndefined = computed(() => slots.undefined);
 
 const isWhenFunction = () => !!props.when && props.when instanceof Function;
+
+const emitChanged = () => emits('changed', dataRef.value);
 
 const onWireDataUpdate = async (value: any) => {
   const skip = (hasWhen() && !props.when)
     || (isWhenFunction() && props.when(value) === false);
   if (skip) return;
   // console.log('> WireData -> onWireDataUpdate:', value);
-  loadData.value = value;
-  emits('changed', value);
+  dataRef.value = value;
+  emitChanged();
 };
 onMounted(() => {
   // console.log('> WireData -> onMounted: for =', props.for, data.value);
-  if (props.isStatic) return;
-  wireData.subscribe(onWireDataUpdate);
+  if (!props.isStatic) {
+    wireData.subscribe(onWireDataUpdate);
+  }
+  if (props.emitOnMounted) {
+    emitChanged();
+  }
 });
 onUnmounted(() => {
   if (props.isStatic) return;
@@ -67,7 +73,7 @@ onUnmounted(() => {
 <template>
   <slot
     v-if="hasData || (!hasData && !hasSlotUndefined)"
-    :data="loadData"
+    :data="dataRef"
     :has="hasData"
   />
   <slot v-else name="undefined" />
